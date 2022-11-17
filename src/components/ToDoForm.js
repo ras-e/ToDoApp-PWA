@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-
-import {Form, Button, Container} from 'react-bootstrap';
+import {Form, Container, ListGroup, Button} from 'react-bootstrap';
 
 
 function ToDoForm()  {
 
     //List
-
     const [todo, setToDos] = useState([]);
-    
 
     //Temp
     const [newToDo, setNewToDo ] = useState('');
@@ -20,13 +17,10 @@ function ToDoForm()  {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(newToDo)
-        if (todo !== "") 
-        setToDos([...todo, { id: Date.now(), title: newToDo }]);
-        setToDos("");
-        //or e.target.reset
-        console.log(newToDo)    
-
+        if (newToDo === '') return
+        setToDos([...todo, { id: Date.now(), title: newToDo }])
+        e.target.reset()   
+    }
 
     return (
         <Container>
@@ -34,23 +28,32 @@ function ToDoForm()  {
                 <Form.Group className="mb-3" controlId="formAddTask">
                     <Form.Label>Task</Form.Label>
                     <Form.Control type="text" placeholder="Add your todo task" name="title" 
-                        //value={input} 
                         onChange={handleNewChange}
                         />
                     <Form.Text className="text-muted">
                         We'll never share your tasks with anyone else.
                     </Form.Text>
                 </Form.Group>
-                    <Button variant="primary" type="submit" 
+                    <Button id="button-submit" variant="primary" type="submit" 
                     >
                           Add
                     </Button>
             </Form>
+
+            <ListGroup>
+                {todo.map((task) => (
+                  <ListGroup.Item key={task.id}> 
+                  {task.title} 
+                  <Button id="button-delete" variant="secondary" size="sm">
+                    Delete
+                  </Button>
+                  </ListGroup.Item>
+                ))}
+            </ListGroup>
         </Container>
              
         );
     }    
-}
 
 export default ToDoForm
 
