@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ToDoForm from './components/ToDoForm/ToDoForm';
+import ToDoForm from './components/ToDoForm';
+import ToDoList from './components/ToDoList'
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <div>
           <ToDoForm/>
         </div>
+
 
       </header>
     </div>
