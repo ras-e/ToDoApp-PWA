@@ -1,0 +1,28 @@
+.mb-3 {
+    width: 60% !important;
+    margin:auto;
+}
+
+.task-group {
+    width: 50%;
+    margin: auto;
+    padding-top: 1rem;
+}
+
+.button-submit {
+}
+
+.button-delete {
+}
+
+.btn-div {
+    padding-right: 5px;
+}
+
+.list-item {
+    text-align: center;
+    
+}
+
+
+

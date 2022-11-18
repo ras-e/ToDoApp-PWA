@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Form, Container, ListGroup, Button} from 'react-bootstrap';
+import "./ToDoForm.css";
 
 
 function ToDoForm()  {
@@ -22,31 +23,39 @@ function ToDoForm()  {
         e.target.reset()   
     }
 
+    function deleteToDo(id) {
+        const newList = todo.filter((todo) => todo.id !== id);
+        //setToDos(todo.filter((todo) => todo.id !== id))
+        
+        setToDos(newList)
+        console.log(todo)
+    }
+
     return (
         <Container>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formAddTask">
-                    <Form.Label>Task</Form.Label>
-                    <Form.Control type="text" placeholder="Add your todo task" name="title" 
+                    <Form.Label>Enter your task</Form.Label>
+                    <Form.Control type="text" placeholder="Add your most AWESOME to-do task..." name="title" 
                         onChange={handleNewChange}
                         />
                     <Form.Text className="text-muted">
                         We'll never share your tasks with anyone else.
                     </Form.Text>
                 </Form.Group>
-                    <Button id="button-submit" variant="primary" type="submit" 
+                    <Button className="button-submit" variant="primary" type="submit" 
                     >
                           Add
                     </Button>
             </Form>
 
-            <ListGroup>
+            <ListGroup className="task-group">
                 {todo.map((task) => (
-                  <ListGroup.Item key={task.id}> 
-                  {task.title} 
-                  <Button id="button-delete" variant="secondary" size="sm">
-                    Delete
-                  </Button>
+                  <ListGroup.Item className='list-item' key={task.id}> 
+                    {task.title}
+                    <Button className="button-delete" variant="secondary" size="sm" onClick={() => deleteToDo(task.id)}>
+                        Delete
+                     </Button>
                   </ListGroup.Item>
                 ))}
             </ListGroup>

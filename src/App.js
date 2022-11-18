@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>ToDo App</h1>
+        <h1>Most AWESOME ToDo App</h1>
         <div>
           <ToDoForm/>
         </div>
