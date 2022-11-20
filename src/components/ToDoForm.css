@@ -1,28 +1,32 @@
 .mb-3 {
     width: 60% !important;
-    margin:auto;
+    margin:auto !important;
+}
+
+.short-text {
+    display: none !important;
 }
 
 .task-group {
     width: 50%;
-    margin: auto;
+    margin: auto !important;
     padding-top: 1rem;
 }
 
-.button-submit {
-}
-
 .button-delete {
-}
-
-.btn-div {
-    padding-right: 5px;
+    float: right !important;
+    background-color: #d11a2a !important;
 }
 
 .list-item {
-    text-align: center;
-    
+    text-align: center !important;
 }
 
-
-
+/* On screens that are 600px wide or less reduce size of inputs, items and reduce amount of text*/
+@media screen and (max-width: 600px) {
+    .input-field { width: 200% !important; }
+    .list-item{  margin:auto !important; }
+    .text-muted { display: none !important; }
+    .short-text { display: inline-block !important; }
+    .full-text { display: none !important; }
+} 

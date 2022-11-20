@@ -25,7 +25,6 @@ function ToDoForm()  {
 
     function deleteToDo(id) {
         const newList = todo.filter((todo) => todo.id !== id);
-        //setToDos(todo.filter((todo) => todo.id !== id))
         
         setToDos(newList)
         console.log(todo)
@@ -36,22 +35,24 @@ function ToDoForm()  {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formAddTask">
                     <Form.Label>Enter your task</Form.Label>
-                    <Form.Control type="text" placeholder="Add your most AWESOME to-do task..." name="title" 
+                    <Form.Control className="full-text"type="text" placeholder="Add your most AWESOME to-do task..." 
+                        onChange={handleNewChange}
+                        />
+                    <Form.Control className="short-text" type="text" placeholder="Add Task" 
                         onChange={handleNewChange}
                         />
                     <Form.Text className="text-muted">
                         We'll never share your tasks with anyone else.
                     </Form.Text>
                 </Form.Group>
-                    <Button className="button-submit" variant="primary" type="submit" 
-                    >
+                    <Button className="button-submit" variant="success" type="submit" >
                           Add
                     </Button>
             </Form>
 
             <ListGroup className="task-group">
                 {todo.map((task) => (
-                  <ListGroup.Item className='list-item' key={task.id}> 
+                  <ListGroup.Item className='list-item col-md-offset-4' key={task.id}> 
                     {task.title}
                     <Button className="button-delete" variant="secondary" size="sm" onClick={() => deleteToDo(task.id)}>
                         Delete
